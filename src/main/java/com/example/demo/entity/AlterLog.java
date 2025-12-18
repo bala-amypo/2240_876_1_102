@@ -3,7 +3,9 @@ package com.example.demo.entity;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
-
+@Getter
+@Setter
+@AllArgsConstructor
 public class AlterLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
