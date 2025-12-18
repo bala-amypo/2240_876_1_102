@@ -42,4 +42,10 @@ public class Product{
     public void setCategory(String category){
         this.category=category;    
     }
+    public Product(String name,String email,String modelNumber,String category){
+        this.name=name;
+        this.email=email;
+        this.modelNumber=modelNumber;
+        this.category=category;
+    }
 }
