@@ -15,7 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class warranty {
+public class Warranty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
