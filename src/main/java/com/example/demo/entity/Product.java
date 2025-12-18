@@ -30,8 +30,16 @@ public class Product{
     public void setEmail(String email){
         this.email=email;
     }
-    public String getModelNumber(String modelNumber){
+    public String getModelNumber(){
         return modelNumber;
     }
-    public void setModelNumber(
+    public void setModelNumber(String modelNumber){
+        this.modelNumber=modelNumber;
+    }
+    public String getCategory(){
+        return category;
+    }
+    public void setCategory(String category){
+        this.category=category;    
+    }
 }
