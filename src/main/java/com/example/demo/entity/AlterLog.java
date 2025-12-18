@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class AlterLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
