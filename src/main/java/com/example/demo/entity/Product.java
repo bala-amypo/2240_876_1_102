@@ -1,27 +1,31 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.util.List;
 
 @Entity
+@Table(name = "products")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class Product{
+public class Product {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    @Column(unique=true)
-    private String email;
+
+    private String brand;
+
     private String modelNumber;
+
     private String category;
 
+    @OneToMany(mappedBy = "product")
+    private List<Warranty> warranties;
 }

@@ -1,26 +1,25 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+@Entity
+@Table(name = "alert_schedules")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Entity
+public class AlertSchedule {
 
-public class AlterSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private ManyToOne warranty;
-    private int daysBeforeExpiry;
+
+    @ManyToOne
+    private Warranty warranty;
+
+    private Integer daysBeforeExpiry;
+
     private Boolean enabled;
-    
 }
