@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+@ConfigurationProperties
 public class JwtProperties {
 
     private String secret;
