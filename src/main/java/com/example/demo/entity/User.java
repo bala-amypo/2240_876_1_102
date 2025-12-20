@@ -30,4 +30,12 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Warranty> warranties;
+
+    public User(Long id, String name, String email, String password, String role) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 }
