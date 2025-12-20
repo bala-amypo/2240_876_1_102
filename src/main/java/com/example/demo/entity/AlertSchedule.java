@@ -3,14 +3,16 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
-@Table(name = "alert_schedules")
+@Table(name = "alert_logs")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AlertSchedule {
+public class AlertLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +21,13 @@ public class AlertSchedule {
     @ManyToOne
     private Warranty warranty;
 
-    private Integer daysBeforeExpiry;
+    private LocalDateTime sentAt;
+    private String message;
 
-    private Boolean enabled;
+    @PrePersist
+    public void prePersist() {
+        if (sentAt == null) {
+            sentAt = LocalDateTime.now();
+        }
+    }
 }

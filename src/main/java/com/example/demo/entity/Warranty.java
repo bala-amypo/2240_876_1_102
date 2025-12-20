@@ -26,7 +26,6 @@ public class Warranty {
     private Product product;
 
     private LocalDate purchaseDate;
-
     private LocalDate expiryDate;
 
     @Column(unique = true)
