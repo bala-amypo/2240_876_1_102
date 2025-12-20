@@ -60,4 +60,5 @@ public class WarrantyServiceImpl implements WarrantyService {
     public List<Warranty> getUserWarranties(Long userId) {
         return warrantyRepository.findByUserId(userId);
     }
+
 }
