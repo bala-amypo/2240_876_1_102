@@ -4,7 +4,7 @@ public class RegisterRequest {
     private String name;
     private String email;
     private String password;
-    private String role;   // optional
+    private String role;   
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
