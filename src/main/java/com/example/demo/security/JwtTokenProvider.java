@@ -25,6 +25,11 @@ public class JwtTokenProvider {
     }
 
     public String createToken(Long userId, String email, String role) {
+
+        if (properties.getExpirationMs() == null) {
+            throw new IllegalStateException("JWT expirationMs is not configured");
+        }
+
         Date now = new Date();
         Date expiry = new Date(now.getTime() + properties.getExpirationMs());
 
@@ -37,6 +42,7 @@ public class JwtTokenProvider {
                 .signWith(getSigningKey())
                 .compact();
     }
+
 
     public boolean validateToken(String token) {
         try {

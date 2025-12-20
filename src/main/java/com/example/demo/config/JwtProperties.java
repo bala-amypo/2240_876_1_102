@@ -1,20 +1,16 @@
 package com.example.demo.config;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Getter
+@Setter
+@Configuration
 @ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
 
     private String secret;
     private Long expirationMs;
-
-    public String getSecret() {
-        return secret;
-    }
-
-    public Long getExpirationMs() {
-        return expirationMs;
-    }
 }
