@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "warranties")
 @Getter
 @Setter
-@NoArgsConstructor
+// @NoArgsConstructor
 // @AllArgsConstructor
 @Builder
 public class Warranty {
