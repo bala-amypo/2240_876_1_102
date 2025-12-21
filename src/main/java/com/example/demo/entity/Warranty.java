@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties(value = {"id", "user", "product"}, allowSetters = true)
 public class Warranty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
