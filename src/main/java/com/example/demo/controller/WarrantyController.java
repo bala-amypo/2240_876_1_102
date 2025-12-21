@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Warranty;
-import com.example.demo.dto.WarrantyRequest;
 import com.example.demo.service.WarrantyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,11 +24,12 @@ public class WarrantyController {
     public ResponseEntity<Warranty> register(
             @PathVariable Long userId,
             @PathVariable Long productId,
-            @RequestBody WarrantyRequest request) {
+            @RequestBody Warranty warranty) {
 
         return ResponseEntity.ok(
-                warrantyService.registerWarranty(userId, productId, request));
+                warrantyService.registerWarranty(userId, productId, warranty));
     }
+
 
 
     @GetMapping("/{warrantyId}")

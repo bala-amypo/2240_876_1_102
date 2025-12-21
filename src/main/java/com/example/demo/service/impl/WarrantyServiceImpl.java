@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dto.WarrantyRequest;
 import com.example.demo.entity.Warranty;
 import com.example.demo.entity.User;
 import com.example.demo.entity.Product;
@@ -32,7 +31,7 @@ public class WarrantyServiceImpl implements WarrantyService {
     }
 
     @Override
-    public Warranty registerWarranty(Long userId, Long productId, WarrantyRequest request) {
+    public Warranty registerWarranty(Long userId, Long productId, Warranty warranty) {
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
@@ -40,26 +39,24 @@ public class WarrantyServiceImpl implements WarrantyService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
 
-        LocalDate purchase = request.getPurchaseDate();
-        LocalDate expiry = request.getExpiryDate();
+        warranty.setId(null);          // force insert
+        warranty.setUser(user);        // override user
+        warranty.setProduct(product);  // override product
+
+        LocalDate purchase = warranty.getPurchaseDate();
+        LocalDate expiry = warranty.getExpiryDate();
 
         if (purchase != null && expiry != null && !expiry.isAfter(purchase)) {
             throw new IllegalArgumentException("Expiry date must be after purchase date");
         }
 
-        if (warrantyRepository.existsBySerialNumber(request.getSerialNumber())) {
+        if (warrantyRepository.existsBySerialNumber(warranty.getSerialNumber())) {
             throw new IllegalArgumentException("Serial number must be unique");
         }
 
-        Warranty warranty = new Warranty();
-        warranty.setUser(user);
-        warranty.setProduct(product);
-        warranty.setPurchaseDate(request.getPurchaseDate());
-        warranty.setExpiryDate(request.getExpiryDate());
-        warranty.setSerialNumber(request.getSerialNumber());
-
         return warrantyRepository.save(warranty);
     }
+
 
     @Override
     public Warranty getWarranty(Long warrantyId) {

@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 public class Warranty {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
