@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Warranty;
+import com.example.demo.dto.WarrantyRequest;
 import com.example.demo.service.WarrantyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,7 +22,6 @@ public class WarrantyController {
     }
 
     @PostMapping("/register/{userId}/{productId}")
-    @Operation(summary = "Register warranty for user and product")
     public ResponseEntity<Warranty> register(
             @PathVariable Long userId,
             @PathVariable Long productId,
@@ -30,6 +30,7 @@ public class WarrantyController {
         return ResponseEntity.ok(
                 warrantyService.registerWarranty(userId, productId, request));
     }
+
 
     @GetMapping("/{warrantyId}")
     @Operation(summary = "Get a warranty")

@@ -1,3 +1,18 @@
+import com.example.demo.dto.WarrantyRequest;
+import com.example.demo.entity.Warranty;
+import com.example.demo.entity.User;
+import com.example.demo.entity.Product;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.WarrantyRepository;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.ProductRepository;
+
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+
 @Service
 public class WarrantyServiceImpl implements WarrantyService {
 
