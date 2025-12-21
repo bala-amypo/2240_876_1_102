@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.example.demo.security.JwtAuthenticationFilter;
+import com.example.demo.security.JwtAuthenticationEntryPoint;
 
 @Configuration
 public class SecurityConfig {
