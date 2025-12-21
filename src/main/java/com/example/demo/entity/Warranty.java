@@ -31,9 +31,9 @@ public class Warranty {
     @Column(unique = true)
     private String serialNumber;
 
-    @OneToMany(mappedBy = "warranty")
-    private List<AlertSchedule> schedules;
+    // @OneToMany(mappedBy = "warranty")
+    // private List<AlertSchedule> schedules;
 
-    @OneToMany(mappedBy = "warranty")
-    private List<AlertLog> logs;
+    // @OneToMany(mappedBy = "warranty")
+    // private List<AlertLog> logs;
 }
