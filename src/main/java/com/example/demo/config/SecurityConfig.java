@@ -22,6 +22,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http
             .csrf(csrf -> csrf.disable())
 
@@ -34,13 +35,21 @@ public class SecurityConfig {
                     "/v3/api-docs/**"
                 ).permitAll()
 
-                // 🔓 Products (curl has no JWT)
+                // 🔓 Products
                 .requestMatchers(HttpMethod.POST, "/products").permitAll()
                 .requestMatchers(HttpMethod.GET, "/products").permitAll()
 
-                // 🔓 Warranties (curl has no JWT)
+                // 🔓 Warranties
                 .requestMatchers(HttpMethod.POST, "/warranties/register/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/warranties/**").permitAll()
+
+                // 🔓 Alert Logs
+                .requestMatchers(HttpMethod.POST, "/logs/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/logs/**").permitAll()
+
+                // 🔓 Alert Schedules
+                .requestMatchers(HttpMethod.POST, "/schedules/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/schedules/**").permitAll()
 
                 // 🔒 Everything else
                 .anyRequest().authenticated()
