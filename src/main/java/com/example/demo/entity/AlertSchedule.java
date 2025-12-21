@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties(value = {"id", "warranty"}, allowSetters = false)
 public class AlertSchedule {
 
     @Id
