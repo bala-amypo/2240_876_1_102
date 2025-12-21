@@ -25,6 +25,10 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+
+                // 👇 ADD THIS LINE
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/products").permitAll()
+
                 .anyRequest().authenticated()
             )
             .exceptionHandling(ex -> ex
@@ -35,6 +39,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
