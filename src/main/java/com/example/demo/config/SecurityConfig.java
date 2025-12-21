@@ -27,29 +27,27 @@ public class SecurityConfig {
 
             .authorizeHttpRequests(auth -> auth
 
-                // 🔓 Public auth + swagger
+                // 🔓 Auth & Swagger
                 .requestMatchers(
                     "/auth/**",
                     "/swagger-ui/**",
                     "/v3/api-docs/**"
                 ).permitAll()
 
-                // 🔓 Products (curl cannot add JWT)
+                // 🔓 Products (curl has no JWT)
                 .requestMatchers(HttpMethod.POST, "/products").permitAll()
                 .requestMatchers(HttpMethod.GET, "/products").permitAll()
 
-                // 🔓 Warranties REGISTER (THIS FIXES YOUR 401)
-                .requestMatchers(
-                    HttpMethod.POST,
-                    "/warranties/register/**"
-                ).permitAll()
+                // 🔓 Warranties (curl has no JWT)
+                .requestMatchers(HttpMethod.POST, "/warranties/register/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/warranties/**").permitAll()
 
-                // 🔒 Everything else secured
+                // 🔒 Everything else
                 .anyRequest().authenticated()
             )
 
-            .exceptionHandling(ex -> ex
-                .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+            .exceptionHandling(ex ->
+                ex.authenticationEntryPoint(new JwtAuthenticationEntryPoint())
             )
 
             .addFilterBefore(
