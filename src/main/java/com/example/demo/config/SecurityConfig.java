@@ -24,21 +24,27 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
+                // Public endpoints
                 .requestMatchers("/auth/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
 
-                // 👇 ADD THIS LINE
+                // 👇 ALLOW PRODUCT CREATION WITHOUT JWT
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/products").permitAll()
+
+                // Optional: allow GET products too
                 .requestMatchers(org.springframework.http.HttpMethod.GET, "/products").permitAll()
 
+                // Everything else secured
                 .anyRequest().authenticated()
             )
             .exceptionHandling(ex -> ex
                 .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
             )
             .addFilterBefore(jwtAuthenticationFilter,
-                    org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
+                org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
+
 
 
     @Bean
