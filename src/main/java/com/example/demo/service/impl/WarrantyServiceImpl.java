@@ -10,11 +10,16 @@ import com.example.demo.repository.WarrantyRepository;
 import com.example.demo.service.WarrantyService;
 import org.springframework.stereotype.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class WarrantyServiceImpl implements WarrantyService {
+
+    @Autowired
+    User userentity;
 
     private final WarrantyRepository warrantyRepository;
     private final UserRepository userRepository;
