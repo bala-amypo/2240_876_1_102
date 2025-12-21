@@ -6,6 +6,7 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.WarrantyRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.ProductRepository;
+import com.example.demo.service.WarrantyService;
 
 import org.springframework.stereotype.Service;
 
