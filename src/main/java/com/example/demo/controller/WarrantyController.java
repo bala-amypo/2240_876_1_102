@@ -25,9 +25,10 @@ public class WarrantyController {
     public ResponseEntity<Warranty> register(
             @PathVariable Long userId,
             @PathVariable Long productId,
-            @RequestBody Warranty warranty) {
+            @RequestBody WarrantyRequest request) {
+
         return ResponseEntity.ok(
-                warrantyService.registerWarranty(userId, productId, warranty));
+                warrantyService.registerWarranty(userId, productId, request));
     }
 
     @GetMapping("/{warrantyId}")

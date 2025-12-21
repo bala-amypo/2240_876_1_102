@@ -1,34 +1,34 @@
-package com.example.demo.entity;
-
-import jakarta.persistence.*;
-import lombok.*;
+package com.example.demo.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
-@Entity
-@Table(name = "warranties")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class Warranty {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private Product product;
+public class WarrantyRequest {
 
     private LocalDate purchaseDate;
     private LocalDate expiryDate;
-
-    @Column(unique = true)
     private String serialNumber;
 
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(LocalDate purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public LocalDate getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
 }
