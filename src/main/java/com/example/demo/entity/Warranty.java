@@ -10,8 +10,8 @@ import java.util.List;
 @Table(name = "warranties")
 @Getter
 @Setter
-// @NoArgsConstructor
-// @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Warranty {
 
@@ -31,9 +31,4 @@ public class Warranty {
     @Column(unique = true)
     private String serialNumber;
 
-    // @OneToMany(mappedBy = "warranty")
-    // private List<AlertSchedule> schedules;
-
-    // @OneToMany(mappedBy = "warranty")
-    // private List<AlertLog> logs;
 }
