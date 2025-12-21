@@ -19,11 +19,11 @@ public class Warranty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @ManyToOne
-    // private User user;
+    @ManyToOne
+    private User user;
 
-    // @ManyToOne
-    // private Product product;
+    @ManyToOne
+    private Product product;
 
     private LocalDate purchaseDate;
     private LocalDate expiryDate;
