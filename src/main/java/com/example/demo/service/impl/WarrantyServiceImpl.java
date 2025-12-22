@@ -39,9 +39,9 @@ public class WarrantyServiceImpl implements WarrantyService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
 
-        warranty.setId(null);          // force insert
-        warranty.setUser(user);        // override user
-        warranty.setProduct(product);  // override product
+        warranty.setId(null);          
+        warranty.setUser(user);        
+        warranty.setProduct(product);  
 
         LocalDate purchase = warranty.getPurchaseDate();
         LocalDate expiry = warranty.getExpiryDate();
