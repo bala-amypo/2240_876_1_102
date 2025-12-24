@@ -30,8 +30,6 @@ public class WarrantyController {
                 warrantyService.registerWarranty(userId, productId, warranty));
     }
 
-
-
     @GetMapping("/{warrantyId}")
     @Operation(summary = "Get a warranty")
     public ResponseEntity<Warranty> getWarranty(@PathVariable Long warrantyId) {
