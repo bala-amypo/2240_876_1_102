@@ -28,14 +28,14 @@ public class SecurityConfig {
 
             .authorizeHttpRequests(auth -> auth
 
-                // 🔓 Auth & Swagger
+                // Auth & Swagger
                 .requestMatchers(
                     "/auth/**",
                     "/swagger-ui/**",
                     "/v3/api-docs/**"
                 ).permitAll()
 
-                // 🔓 Products
+                // Products
                 .requestMatchers(HttpMethod.POST, "/products").permitAll()
                 .requestMatchers(HttpMethod.GET, "/products").permitAll()
 
