@@ -21,7 +21,6 @@ public class SwaggerConfig {
                 .servers(List.of(
                         new Server().url("https://9130.32procr.amypo.ai/")
                 ))
-                // 🔐 Apply JWT globally
                 .addSecurityItem(new SecurityRequirement().addList(SECURITY_SCHEME_NAME))
                 .components(new Components()
                         .addSecuritySchemes(
