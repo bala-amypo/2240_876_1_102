@@ -14,7 +14,7 @@ import java.util.List;
 @Tag(name = "Products")
 public class ProductController {
 
-    @Autowired
+ 
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
